@@ -1,5 +1,6 @@
 package scherbatyuk.shops.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -15,11 +16,15 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-
+	@Column
 	private String email;
+	@Column
 	private String firstName;
+	@Column
 	private String lastName;
+	@Column
 	private String password;
+	@Column
 	private String passwordConfirm;
 
 	@Enumerated(EnumType.STRING)
