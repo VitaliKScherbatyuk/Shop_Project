@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Product</title>
+<title>Bucket</title>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <body>
@@ -37,33 +37,32 @@
 					</h2>
 				</c:if>
 
-				<form:form method="POST" action="${contextPath}/addProduct"
-					enctype="multipart/form-data">
-					<table>
+				<table class="table table-striped">
+					<thead>
 						<tr>
-							<td>Name</td>
-							<td><input type="text" name="name" /></td>
+							<th>Id</th>
+							<th>Name</th>
+							<th>Description</th>
+							<th>Price</th>
+							<th>Image</th>
+							<th>Purchase Date</th>
+							<th>Action</th>
 						</tr>
-						<tr>
-							<td>Description</td>
-							<td><input type="text" name="description" /></td>
-						</tr>
-						<tr>
-							<td>Price</td>
-							<td><input type="number" name="price" /></td>
-						</tr>
-						<tr>
-							<td>Select an image to upload</td>
-							<td><input type="file" name="image" /></td>
-						</tr>
-
-						<tr>
-							<td><input type="submit" value="Submit" /></td>
-						</tr>
-					</table>
-					<input type="hidden" name="${_csrf.parameterName}"
-						value="${_csrf.token}" />
-				</form:form>
+					</thead>
+					<tbody>
+						<c:forEach var="bucket" items="${bucketItems}">
+							<tr>
+								<td>${bucket.id}</td>
+								<td>${bucket.product.name}</td>
+								<td>${bucket.product.description}</td>
+								<td>${bucket.product.price}</td>
+								<td><img src="data:image/jpg;base64,${bucket.product.encodedImage}" alt="image" style="width: 10%"></td>
+								<td>${bucket.purchaseDate}</td>
+								<td><a href="bucket?id= ${bucket.id}">delete</a></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 
 
 			</div>
@@ -72,9 +71,5 @@
 
 
 	</div>
-	<!-- /container -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import scherbatyuk.shops.domain.User;
+import scherbatyuk.shops.service.ProductService;
 import scherbatyuk.shops.service.UserService;
 
 @Controller
@@ -16,6 +17,9 @@ public class UserController {
 
 	@Autowired
     private UserService userService;
+	
+	@Autowired
+	private ProductService productService;
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model) {
@@ -50,4 +54,9 @@ public class UserController {
     public String welcome(Model model) {
         return "home";
     }
+    
+    @RequestMapping(value ="/create-product", method = RequestMethod.GET)
+    public String createProduct() {
+    	return "createProduct";
+    }  
 }

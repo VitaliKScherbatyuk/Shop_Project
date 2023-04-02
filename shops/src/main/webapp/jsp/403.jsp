@@ -12,8 +12,8 @@
 			<h3>You have no permission to access page!</h3>
 		</div>
 		<form action="/logout" method="post">
-			<input type="submit" value="Sign in as different user" /> <input
-				type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			<input type="submit" value="Sign in as different user" /> 
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		</form>
 
 	</div>
