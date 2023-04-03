@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import scherbatyuk.shops.domain.User;
 import scherbatyuk.shops.service.ProductService;
@@ -51,9 +52,12 @@ public class UserController {
     }
 
     @RequestMapping(value ="/home", method = RequestMethod.GET)
-    public String welcome(Model model) {
-        return "home";
-    }
+	public ModelAndView welcome() {
+		ModelAndView map = new ModelAndView("home");
+		map.addObject("product", productService.getAllProduct());
+
+		return map;
+	}
     
     @RequestMapping(value ="/create-product", method = RequestMethod.GET)
     public String createProduct() {

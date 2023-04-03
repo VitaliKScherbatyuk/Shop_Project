@@ -73,13 +73,7 @@ public class Product {
 		this.price = price;
 	}
 
-	public void setEncodedImage(String encodeToString) {
-		this.encodedImage = encodedImage;
-	}
-
-	public String getEncodedImage() {
-		return encodedImage;
-	}
+	
 
 	@Override
 	public int hashCode() {
@@ -127,6 +121,14 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + "]";
+	}
+
+	public String getEncodedImage() {
+		return encodedImage;
+	}
+
+	public void setEncodedImage(String encodedImage) {
+		this.encodedImage = encodedImage;
 	}
 
 }
